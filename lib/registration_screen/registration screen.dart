@@ -1,14 +1,13 @@
-// lib/login_screen.dart
-import 'package:firebase/registration_screen/registration%20screen.dart';
-import 'package:flutter/material.dart';
-// lib/login_screen.dart
+import 'package:firebase/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(
+        title: Text('Register'),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -19,28 +18,30 @@ class LoginScreen extends StatelessWidget {
                 decoration: InputDecoration(labelText: 'Username'),
               ),
               TextField(
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              TextField(
                 decoration: InputDecoration(labelText: 'Password'),
                 obscureText: true,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Add login action here
+                  // Add registration action here
                 },
-                child: Text('Login'),
+                child: Text('Register'),
               ),
               SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // Navigate to Registration screen
+                  // Navigate to Login screen
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => RegistrationScreen()),
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
                   );
                 },
                 child: Text(
-                  "Don't have an account? Register",
+                  'Already have an account? Log in',
                   style: TextStyle(
                     color: Colors.blue,
                     decoration: TextDecoration.underline,
