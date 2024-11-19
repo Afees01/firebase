@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase/controller/home_screen%20_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,10 @@ class _StudentScreenState extends State<HomeScreen> {
         subject: _subjectController.text,
         phone: _phoneController.text,
       );
+      HomeScreenController.addData(
+          name: _nameController.text,
+          ph: _phoneController.text,
+          sub: _subjectController.text);
 
       setState(() {
         if (_editingIndex == null) {
@@ -55,12 +60,6 @@ class _StudentScreenState extends State<HomeScreen> {
     _nameController.clear();
     _subjectController.clear();
     _phoneController.clear();
-  }
-
-  void _deleteStudent(int index) {
-    setState(() {
-      _students.removeAt(index);
-    });
   }
 
   void _editStudent(int index) {
@@ -164,9 +163,9 @@ class _StudentScreenState extends State<HomeScreen> {
                         onPressed: () => _editStudent(index),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () => _deleteStudent(index),
-                      ),
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => HomeScreenController.deleteDAta(
+                              studentList[index].id)),
                     ],
                   ),
                 );
